@@ -66,6 +66,7 @@
         android:textStyle="italic" />
 
     <Button
+        android:id="@+id/generateBtn"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_below="@+id/plainText"
@@ -89,6 +90,7 @@
         android:background="@color/teal_200"
         />
     <ImageView
+        android:id="@+id/successImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
