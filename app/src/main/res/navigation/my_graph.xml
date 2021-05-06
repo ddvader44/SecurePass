@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.ddvader44.securepass.HomeFragment"
-        android:label="Home"
+        android:label="SecurePass"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_successFragment"
@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/successFragment"
         android:name="com.ddvader44.securepass.SuccessFragment"
-        android:label="Success"
+        android:label="SecurePass"
         tools:layout="@layout/fragment_success" >
         <action
             android:id="@+id/action_successFragment_to_homeFragment"
