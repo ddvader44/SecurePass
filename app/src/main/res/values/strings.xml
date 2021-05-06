@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">SecurePass</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="facebook">Facebook</string>
+    <string name="enter_password_here">Enter Password Here...</string>
+    <string name="generate">GENERATE</string>
+    <string name="clear">Clear</string>
+
+    <string-array name="websites">
+        <item>Facebook</item>
+        <item>Gmail</item>
+        <item>Coursera</item>
+    </string-array>
+</resources>
