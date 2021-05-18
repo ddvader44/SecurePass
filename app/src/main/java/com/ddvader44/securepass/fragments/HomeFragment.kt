@@ -1,4 +1,4 @@
-package com.ddvader44.securepass
+package com.ddvader44.securepass.fragments
 
 import android.os.Bundle
 import android.view.*
@@ -6,7 +6,9 @@ import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.ddvader44.securepass.R
 import com.ddvader44.securepass.databinding.FragmentHomeBinding
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -14,6 +16,13 @@ class HomeFragment : Fragment() {
 
     private var _binding : FragmentHomeBinding ?= null
     private val binding get() = _binding!!
+
+    override fun onResume() {
+        super.onResume()
+        val websites = resources.getStringArray(R.array.websites)
+        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.drop_down,websites)
+        binding.autoCompleteTextView.setAdapter(arrayAdapter)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,19 +32,24 @@ class HomeFragment : Fragment() {
 
         setHasOptionsMenu(true)
 
-        val websites = resources.getStringArray(R.array.websites)
-        val arrayAdapter = ArrayAdapter(requireContext(),R.layout.drop_down,websites)
-        binding.autoCompleteTextView.setAdapter(arrayAdapter)
-
         binding.generateBtn.setOnClickListener {
-            lifecycleScope.launch {
-             applyAnimations()
-             navigateToSuccess()
-            }
+            onGenerateClicked()
         }
 
         return binding.root
     }
+
+    private fun onGenerateClicked() {
+        if(binding.plainText.text.isEmpty()){
+            showSnackbar("Please enter something first!")
+        }else{
+            lifecycleScope.launch {
+                applyAnimations()
+                navigateToSuccess()
+            }
+        }
+    }
+
 
     private suspend fun applyAnimations() {
         binding.generateBtn.isClickable = false
@@ -62,6 +76,16 @@ class HomeFragment : Fragment() {
         binding.successImage.animate().alpha(1f).duration = 1000L
 
         delay(1500L)
+    }
+
+    private fun showSnackbar(message : String){
+        val snackBar = Snackbar.make(
+            binding.rootLayout,
+            message,
+            Snackbar.LENGTH_SHORT
+        )
+        snackBar.setAction("Okay"){}
+        snackBar.show()
     }
 
     private fun navigateToSuccess(){
