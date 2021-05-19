@@ -8,8 +8,12 @@
     <string name="clear">Clear</string>
 
     <string-array name="websites">
-        <item>Facebook</item>
-        <item>Gmail</item>
-        <item>Coursera</item>
+
+        <item>Social Media</item>                                       <!-- PBKDF2 -->
+        <item>Email</item>                                              <!-- SCrypt -->
+        <item>Online Payments</item>                                    <!-- SOTA -->
+        <item>Online Certifications</item>                              <!-- BCrypt -->
+        <item>Cloud Servers</item>                                      <!-- Argon2id -->
+
     </string-array>
 </resources>
