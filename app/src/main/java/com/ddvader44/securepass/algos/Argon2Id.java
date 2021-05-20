@@ -5,7 +5,7 @@ import de.mkammerer.argon2.Argon2Factory;
 
 public class Argon2Id {
 
-     public String argon(String message){
+     public static String argon(String message){
 
         Argon2 argon2 = Argon2Factory.create();
         char[] password = message.toCharArray();

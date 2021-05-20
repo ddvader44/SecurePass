@@ -11,7 +11,7 @@ import javax.crypto.spec.PBEKeySpec;
 
 public class PBKFD2 {
 
-    public String pbkfd(String message) throws NoSuchAlgorithmException, InvalidKeySpecException {
+     public static String pbkfd(String message) throws NoSuchAlgorithmException, InvalidKeySpecException {
 
         // generate salts
 

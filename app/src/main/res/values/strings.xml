@@ -10,7 +10,7 @@
     <string-array name="websites">
 
         <item>Social Media</item>                                       <!-- PBKDF2 -->
-        <item>Email</item>                                              <!-- SCrypt -->
+        <item>Email</item>                                              <!-- MD5 -->
         <item>Online Payments</item>                                    <!-- SOTA -->
         <item>Online Certifications</item>                              <!-- BCrypt -->
         <item>Cloud Servers</item>                                      <!-- Argon2id -->
