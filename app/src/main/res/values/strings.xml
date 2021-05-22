@@ -6,6 +6,8 @@
     <string name="enter_password_here">Enter Password Here...</string>
     <string name="generate">GENERATE</string>
     <string name="clear">Clear</string>
+    <string name="social_media">Social Media</string>
+    <string name="copy">Copy</string>
 
     <string-array name="websites">
 

@@ -4,15 +4,19 @@ import android.os.Bundle
 import android.view.*
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.ddvader44.securepass.R
 import com.ddvader44.securepass.databinding.FragmentHomeBinding
+import com.ddvader44.securepass.viewmodels.HomeViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
+
+    private val homeViewModel  : HomeViewModel by viewModels()
 
     private var _binding : FragmentHomeBinding ?= null
     private val binding get() = _binding!!
@@ -45,7 +49,7 @@ class HomeFragment : Fragment() {
         }else{
             lifecycleScope.launch {
                 applyAnimations()
-                navigateToSuccess()
+                navigateToSuccess(getHashData())
             }
         }
     }
@@ -78,27 +82,42 @@ class HomeFragment : Fragment() {
         delay(1500L)
     }
 
+    private fun getHashData() : String{
+        val algorithm = binding.autoCompleteTextView.text.toString()
+        val plainText = binding.plainText.text.toString()
+        return homeViewModel.getHash(plainText,algorithm)
+    }
+
     private fun showSnackbar(message : String){
         val snackBar = Snackbar.make(
             binding.rootLayout,
             message,
             Snackbar.LENGTH_SHORT
         )
-        snackBar.setAction("Okay"){}
+        snackBar.setAction("OK"){}
         snackBar.show()
     }
 
-    private fun navigateToSuccess(){
-        findNavController().navigate(R.id.action_homeFragment_to_successFragment)
+    private fun navigateToSuccess(hash : String){
+        val directions = HomeFragmentDirections.actionHomeFragmentToSuccessFragment(hash)
+        findNavController().navigate(directions)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.home_menu,menu)
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == R.id.clear_menu){
+            binding.plainText.text.clear()
+            showSnackbar("Cleared!")
+            return true
+        }
+        return true
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
-
 }

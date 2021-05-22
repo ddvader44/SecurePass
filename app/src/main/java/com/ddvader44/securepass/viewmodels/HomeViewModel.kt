@@ -17,8 +17,7 @@ class HomeViewModel : ViewModel() {
     }
 
     private fun toHex(byteArray: ByteArray): String {
-        Log.d("ViewModel",byteArray.joinToString { "%02x".format(it) })
-        return byteArray.joinToString { "%02x".format(it) }
+        return byteArray.joinToString("") { "%02x".format(it) }
     }
 
     fun pbkfd2algo(plainText: String) : String{
