@@ -17,7 +17,9 @@
         android:textAlignment="center"
         android:textColor="@color/teal_200"
         android:textSize="26sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_margin="20dp"
+        />
 
     <Button
         android:layout_width="match_parent"
