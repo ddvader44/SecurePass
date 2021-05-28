@@ -22,12 +22,16 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="70dp"
+        android:paddingStart="140dp"
+        android:paddingEnd="140dp"
         android:text="@string/copy"
         android:backgroundTint="@color/blue"
         android:layout_margin="20dp"
         android:layout_alignParentBottom="true"
         android:textStyle="bold"
         android:textSize="16sp"
+        app:icon="@drawable/ic_copy"
+        android:id="@+id/copy_button"
         />
 
 

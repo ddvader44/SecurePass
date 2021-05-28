@@ -1,6 +1,5 @@
 package com.ddvader44.securepass.viewmodels
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.ddvader44.securepass.algos.Argon2Id
 import com.ddvader44.securepass.algos.BCrypt
@@ -11,22 +10,37 @@ class HomeViewModel : ViewModel() {
 
     fun getHash(plainText: String, algorithm: String) : String {
 
-        val bytes = MessageDigest.getInstance(algorithm).digest(plainText.toByteArray())
-        return toHex(bytes)
-
+        when (algorithm) {
+            "Social Media" -> {
+                return pbkfd2algo(plainText)
+            }
+            "Email" -> {
+                val bytes = MessageDigest.getInstance("MD5").digest(plainText.toByteArray())
+                return toHex(bytes)
+            }
+            "Online Certifications" -> {
+                return bcryptalgo(plainText)
+            }
+            "Cloud Servers" -> {
+                return argonalgo(plainText)
+            }
+            else -> {
+                return "doing"
+            }
+        }
     }
 
     private fun toHex(byteArray: ByteArray): String {
         return byteArray.joinToString("") { "%02x".format(it) }
     }
 
-    fun pbkfd2algo(plainText: String) : String{
+    private fun pbkfd2algo(plainText: String) : String{
         return PBKFD2.pbkfd(plainText)
     }
-    fun bcryptalgo(plainText: String) : String{
+    private fun bcryptalgo(plainText: String) : String{
         return BCrypt.bcrypt(plainText)
     }
-    fun argonalgo(plainText: String) : String{
+    private fun argonalgo(plainText: String) : String{
         return Argon2Id.argon(plainText)
     }
 

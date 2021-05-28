@@ -25,7 +25,7 @@ class SuccessFragment : Fragment() {
 
         _binding = FragmentSuccessBinding.inflate(inflater, container, false)
 
-        Log.d("Success",args.hash)
+        binding.hashTextView.text = args.hash
 
         return binding.root
     }

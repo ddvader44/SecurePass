@@ -16,15 +16,15 @@ import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
 
-    private val homeViewModel  : HomeViewModel by viewModels()
+    private val homeViewModel: HomeViewModel by viewModels()
 
-    private var _binding : FragmentHomeBinding ?= null
+    private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
     override fun onResume() {
         super.onResume()
         val websites = resources.getStringArray(R.array.websites)
-        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.drop_down,websites)
+        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.drop_down, websites)
         binding.autoCompleteTextView.setAdapter(arrayAdapter)
     }
 
@@ -44,9 +44,9 @@ class HomeFragment : Fragment() {
     }
 
     private fun onGenerateClicked() {
-        if(binding.plainText.text.isEmpty()){
+        if (binding.plainText.text.isEmpty()) {
             showSnackbar("Please enter something first!")
-        }else{
+        } else {
             lifecycleScope.launch {
                 applyAnimations()
                 navigateToSuccess(getHashData())
@@ -82,33 +82,33 @@ class HomeFragment : Fragment() {
         delay(1500L)
     }
 
-    private fun getHashData() : String{
+    private fun getHashData(): String {
         val algorithm = binding.autoCompleteTextView.text.toString()
         val plainText = binding.plainText.text.toString()
-        return homeViewModel.getHash(plainText,algorithm)
+        return homeViewModel.getHash(plainText, algorithm)
     }
 
-    private fun showSnackbar(message : String){
+    private fun showSnackbar(message: String) {
         val snackBar = Snackbar.make(
             binding.rootLayout,
             message,
             Snackbar.LENGTH_SHORT
         )
-        snackBar.setAction("OK"){}
+        snackBar.setAction("OK") {}
         snackBar.show()
     }
 
-    private fun navigateToSuccess(hash : String){
+    private fun navigateToSuccess(hash: String) {
         val directions = HomeFragmentDirections.actionHomeFragmentToSuccessFragment(hash)
         findNavController().navigate(directions)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.home_menu,menu)
+        inflater.inflate(R.menu.home_menu, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId == R.id.clear_menu){
+        if (item.itemId == R.id.clear_menu) {
             binding.plainText.text.clear()
             showSnackbar("Cleared!")
             return true
@@ -120,4 +120,5 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }
