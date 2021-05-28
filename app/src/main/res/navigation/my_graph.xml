@@ -29,7 +29,6 @@
         <argument
             android:name="hash"
             app:argType="string"
-            android:defaultValue="Empty"
             />
     </fragment>
 </navigation>
