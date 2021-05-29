@@ -29,9 +29,7 @@ public class PBKFD2 {
 
         byte[] hash = factory.generateSecret(spec).getEncoded();
 
-        String hashedString = Hex.encodeHexString(hash);
-
-        return hashedString;
+        return Hex.encodeHexString(hash);
 
     }
 

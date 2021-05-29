@@ -1,13 +1,18 @@
 package com.ddvader44.securepass.viewmodels
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.ViewModel
 import com.ddvader44.securepass.algos.Argon2Id
 import com.ddvader44.securepass.algos.BCrypt
+import com.ddvader44.securepass.algos.LtHashAlgo
 import com.ddvader44.securepass.algos.PBKFD2
+import com.ddvader44.securepass.algos.lthash.LtHash32
 import java.security.MessageDigest
 
 class HomeViewModel : ViewModel() {
 
+    @RequiresApi(Build.VERSION_CODES.N)
     fun getHash(plainText: String, algorithm: String) : String {
 
         when (algorithm) {
@@ -25,7 +30,7 @@ class HomeViewModel : ViewModel() {
                 return argonalgo(plainText)
             }
             else -> {
-                return "doing"
+                return lthash(plainText)
             }
         }
     }
@@ -42,6 +47,11 @@ class HomeViewModel : ViewModel() {
     }
     private fun argonalgo(plainText: String) : String{
         return Argon2Id.argon(plainText)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.N)
+    private fun lthash(plainText: String) : String{
+        return LtHashAlgo.ltalgo(plainText)
     }
 
 }
