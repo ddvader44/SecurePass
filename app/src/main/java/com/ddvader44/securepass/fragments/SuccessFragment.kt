@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.navArgs
 import com.ddvader44.securepass.R
 import com.ddvader44.securepass.databinding.FragmentSuccessBinding
@@ -56,6 +57,7 @@ class SuccessFragment : Fragment() {
             Snackbar.LENGTH_SHORT
         )
         snackBar.setAction("OK") {}
+        snackBar.setActionTextColor(ContextCompat.getColor(requireContext(),R.color.blue))
         snackBar.show()
     }
 

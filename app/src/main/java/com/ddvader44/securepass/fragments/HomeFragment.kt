@@ -1,8 +1,11 @@
 package com.ddvader44.securepass.fragments
 
+import android.os.Build
 import android.os.Bundle
 import android.view.*
 import android.widget.ArrayAdapter
+import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -28,6 +31,7 @@ class HomeFragment : Fragment() {
         binding.autoCompleteTextView.setAdapter(arrayAdapter)
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,6 +47,7 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     private fun onGenerateClicked() {
         if (binding.plainText.text.isEmpty()) {
             showSnackbar("Please enter something first!")
@@ -82,6 +87,7 @@ class HomeFragment : Fragment() {
         delay(1500L)
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     private fun getHashData(): String {
         val algorithm = binding.autoCompleteTextView.text.toString()
         val plainText = binding.plainText.text.toString()
@@ -95,6 +101,7 @@ class HomeFragment : Fragment() {
             Snackbar.LENGTH_SHORT
         )
         snackBar.setAction("OK") {}
+        snackBar.setActionTextColor(ContextCompat.getColor(requireContext(),R.color.blue))
         snackBar.show()
     }
 
