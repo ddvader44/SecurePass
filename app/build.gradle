@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'androidx.navigation.safeargs'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -57,4 +58,10 @@ dependencies {
     implementation 'org.signal:argon2:13.1@aar'
     implementation 'at.favre.lib:bcrypt:0.9.0'
     implementation 'commons-codec:commons-codec:1.9'
+
+    //room db
+    def room_version = "2.3.0"
+
+    implementation("androidx.room:room-runtime:$room_version")
+    kapt "androidx.room:room-compiler:$room_version"
 }

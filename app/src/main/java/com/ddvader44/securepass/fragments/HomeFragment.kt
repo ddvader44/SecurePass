@@ -2,6 +2,7 @@ package com.ddvader44.securepass.fragments
 
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.ArrayAdapter
 import androidx.annotation.RequiresApi
@@ -10,8 +11,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.room.Room
 import com.ddvader44.securepass.R
 import com.ddvader44.securepass.databinding.FragmentHomeBinding
+import com.ddvader44.securepass.db.Password
+import com.ddvader44.securepass.db.PasswordDatabase
 import com.ddvader44.securepass.viewmodels.HomeViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.delay
@@ -43,6 +47,7 @@ class HomeFragment : Fragment() {
         binding.generateBtn.setOnClickListener {
             onGenerateClicked()
         }
+
 
         return binding.root
     }
@@ -91,7 +96,21 @@ class HomeFragment : Fragment() {
     private fun getHashData(): String {
         val algorithm = binding.autoCompleteTextView.text.toString()
         val plainText = binding.plainText.text.toString()
-        return homeViewModel.getHash(plainText, algorithm)
+
+        val output = homeViewModel.getHash(plainText, algorithm)
+
+        val database = activity?.let {
+            Room.databaseBuilder(it, PasswordDatabase::class.java, "password_database")
+                .allowMainThreadQueries()
+                .build()
+        }
+
+        database?.passwordDao()?.insertPassword(Password(type = algorithm,hashed = output))
+
+        Log.d("checkitout", database?.passwordDao()?.getAllPassword().toString())
+
+        return output
+
     }
 
     private fun showSnackbar(message: String) {
@@ -119,6 +138,9 @@ class HomeFragment : Fragment() {
             binding.plainText.text.clear()
             showSnackbar("Cleared!")
             return true
+        }
+        if(item.itemId == R.id.show_passwords){
+            findNavController().navigate(R.id.action_homeFragment_to_dataFragment2)
         }
         return true
     }

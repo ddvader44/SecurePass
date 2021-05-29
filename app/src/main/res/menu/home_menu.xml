@@ -7,4 +7,10 @@
         android:title="@string/clear"
         app:showAsAction="never"/>
 
+    <item
+        android:id="@+id/show_passwords"
+        android:title="@string/show_passwords"
+        app:showAsAction="never"/>
+
+
 </menu>
