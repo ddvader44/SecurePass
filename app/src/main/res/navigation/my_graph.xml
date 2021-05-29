@@ -42,7 +42,7 @@
     <fragment
         android:id="@+id/dataFragment"
         android:name="com.ddvader44.securepass.fragments.dataFragment"
-        android:label="fragment_data"
+        android:label="Your Passwords"
         tools:layout="@layout/fragment_data" >
         <action
             android:id="@+id/action_dataFragment_to_homeFragment"
