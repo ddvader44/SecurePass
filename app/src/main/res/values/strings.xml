@@ -13,7 +13,7 @@
 
         <item>Social Media</item>                                       <!-- PBKDF2 -->
         <item>Email</item>                                              <!-- MD5 -->
-        <item>Online Payments</item>                                    <!-- HMAC -->
+        <item>Online Payments</item>                                    <!-- LtHash -->
         <item>Online Certifications</item>                              <!-- BCrypt -->
         <item>Cloud Servers</item>                                      <!-- Argon2id -->
 
