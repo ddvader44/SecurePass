@@ -1,9 +1,6 @@
 package com.ddvader44.securepass.db
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface PasswordDao {
@@ -11,7 +8,7 @@ interface PasswordDao {
     @Query("SELECT * from password")
     fun getAllPassword()  : List<Password>
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertPassword(password: Password)
 
     @Delete

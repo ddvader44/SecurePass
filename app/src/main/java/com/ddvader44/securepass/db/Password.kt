@@ -4,8 +4,8 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class Password (
-    @PrimaryKey(autoGenerate = true) val uid : Int=1,
-    val type : String,
-    val hashed : String
+data class Password(
+    @PrimaryKey(autoGenerate = true) var uid: Int? =1,
+    var type: String,
+    var hashed: String
 )

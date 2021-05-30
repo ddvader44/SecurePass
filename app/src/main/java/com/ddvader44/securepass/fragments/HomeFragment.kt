@@ -2,7 +2,6 @@ package com.ddvader44.securepass.fragments
 
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.widget.ArrayAdapter
 import androidx.annotation.RequiresApi
@@ -105,9 +104,9 @@ class HomeFragment : Fragment() {
                 .build()
         }
 
-        database?.passwordDao()?.insertPassword(Password(type = algorithm,hashed = output))
+        database?.passwordDao()?.insertPassword(Password(null, type = algorithm, hashed = output))
 
-        Log.d("checkitout", database?.passwordDao()?.getAllPassword().toString())
+
 
         return output
 

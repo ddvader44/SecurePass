@@ -61,4 +61,9 @@ class SuccessFragment : Fragment() {
         snackBar.show()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 }
