@@ -36,17 +36,25 @@ class HomeViewModel : ViewModel() {
     }
 
     private fun toHex(byteArray: ByteArray): String {
-        return byteArray.joinToString("") { "%02x".format(it) }
+        var x = byteArray.joinToString("") { "%02x".format(it) }
+        x = x.removeRange(12,x.length)
+        return x
     }
 
     private fun pbkfd2algo(plainText: String) : String{
-        return PBKFD2.pbkfd(plainText)
+        var x =  PBKFD2.pbkfd(plainText)
+        x = x.removeRange(12,x.length)
+        return x
     }
     private fun bcryptalgo(plainText: String) : String{
-        return BCrypt.bcrypt(plainText)
+        var x =  BCrypt.bcrypt(plainText)
+        x = x.removeRange(12,x.length)
+        return x
     }
     private fun argonalgo(plainText: String) : String{
-        return Argon2Id.argon(plainText)
+        var x =  Argon2Id.argon(plainText)
+        x = x.removeRange(12,x.length)
+        return x
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
