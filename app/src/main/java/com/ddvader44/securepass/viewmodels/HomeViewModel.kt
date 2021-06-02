@@ -7,7 +7,6 @@ import com.ddvader44.securepass.algos.Argon2Id
 import com.ddvader44.securepass.algos.BCrypt
 import com.ddvader44.securepass.algos.LtHashAlgo
 import com.ddvader44.securepass.algos.PBKFD2
-import com.ddvader44.securepass.algos.lthash.LtHash32
 import java.security.MessageDigest
 
 class HomeViewModel : ViewModel() {
