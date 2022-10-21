@@ -7,5 +7,6 @@ import androidx.room.PrimaryKey
 data class Password(
     @PrimaryKey(autoGenerate = true) var uid: Int? =1,
     var type: String,
-    var hashed: String
+    var hashed: String,
+    var app : String
 )

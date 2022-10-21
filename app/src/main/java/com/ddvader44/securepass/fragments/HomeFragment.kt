@@ -53,11 +53,13 @@ class HomeFragment : Fragment() {
 
     @RequiresApi(Build.VERSION_CODES.N)
     private fun onGenerateClicked() {
-        if (binding.plainText.text.isEmpty()) {
+        if (binding.plainText.text.isEmpty() || binding.platform.text.isEmpty()) {
             showSnackbar("Please enter something first!")
         } else {
             lifecycleScope.launch {
                 applyAnimations()
+                binding.plainText.text.clear()
+                binding.platform.text.clear()
                 navigateToSuccess(getHashData())
             }
         }
@@ -75,6 +77,10 @@ class HomeFragment : Fragment() {
         binding.plainText.animate()
             .alpha(0f)
             .translationXBy(-1200f)
+            .duration = 400L
+        binding.platform.animate()
+            .alpha(0f)
+            .translationXBy(1200f)
             .duration = 400L
 
         delay(300)
@@ -95,7 +101,7 @@ class HomeFragment : Fragment() {
     private fun getHashData(): String {
         val algorithm = binding.autoCompleteTextView.text.toString()
         val plainText = binding.plainText.text.toString()
-
+        val app = binding.platform.text.toString()
         val output = homeViewModel.getHash(plainText, algorithm)
 
         val database = activity?.let {
@@ -104,9 +110,7 @@ class HomeFragment : Fragment() {
                 .build()
         }
 
-        database?.passwordDao()?.insertPassword(Password(null, type = algorithm, hashed = output))
-
-
+        database?.passwordDao()?.insertPassword(Password(null, type = algorithm, hashed = output,app = app))
 
         return output
 
@@ -135,6 +139,7 @@ class HomeFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.clear_menu) {
             binding.plainText.text.clear()
+            binding.platform.text.clear()
             showSnackbar("Cleared!")
             return true
         }

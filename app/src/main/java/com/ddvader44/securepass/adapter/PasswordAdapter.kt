@@ -21,7 +21,7 @@ class PasswordAdapter(private val allPasswords: List<Password>) : RecyclerView.A
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         with(holder) {
-            binding.type.text = allPasswords[position].type
+            binding.type.text = allPasswords[position].app
             binding.hashed.text = allPasswords[position].hashed
         }
 

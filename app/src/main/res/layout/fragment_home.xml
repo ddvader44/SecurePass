@@ -47,10 +47,27 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <EditText
-        android:id="@+id/plainText"
+        android:id="@+id/platform"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textInputLayout"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginRight="16dp"
+        android:background="@color/dark_blue"
+        android:ems="10"
+        android:gravity="start"
+        android:hint="@string/application_name"
+        android:padding="16dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textStyle="italic" />
+
+    <EditText
+        android:id="@+id/plainText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/platform"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="60dp"
         android:layout_marginRight="16dp"

@@ -9,6 +9,7 @@
     <string name="copy">Copy</string>
     <string name="show_passwords">Show Passwords</string>
     <string name="sample_text">sample text</string>
+    <string name="application_name">Application Name</string>
 
     <string-array name="websites">
 
