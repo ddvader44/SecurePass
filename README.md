@@ -22,6 +22,7 @@ git clone https://github.com/ddvader44/SecurePass.git
 ## Tech stack & Open-source libraries
 - Minimum SDK level 21
 - [Kotlin](https://kotlinlang.org/) based, [Coroutines](https://github.com/Kotlin/kotlinx.coroutines) for asynchronous.
+- [Java](https://www.java.com/en/) for algorithms.
 - Hashing Algorithms Used
   - PBKDF2 for Social Media
   - [Bcrypt](https://javadoc.io/doc/at.favre.lib/bcrypt/latest/index.html) for Online Certifications
