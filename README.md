@@ -2,7 +2,7 @@
   <a href="https://github.com/ddvader44/SecurePass">
    <img src="https://user-images.githubusercontent.com/40226856/200661353-f33c01bd-3dd3-4fe4-97a3-534c82e0ec22.png" height="150">
   <h1 align="center">SecurePass 🛡️</h1>
-  <h2 align="center">Safe Storage and Password Manager Based on Cryptanalysis</h2>
+  <h2 align="center">Safe Storage and Password Manager/Generator Based on Cryptanalysis</h2>
 </a>
 </p>
 
